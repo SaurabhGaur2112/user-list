@@ -6,7 +6,11 @@ import '../static/scss/main.scss';
 
 class Layout extends Component {
   static propTypes = {
-    children: PropTypes.array,
+    children: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.array,
+    ]),
   };
 
   state = {};
