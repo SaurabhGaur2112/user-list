@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // react modules
+import getConfig from 'next/config';
 import _ from 'lodash';
 import Table from '@hawk-ui/table';
+import Tooltip from '@hawk-ui/tooltip';
 // action modules
 import { getUserLists } from './HomeActions';
 
@@ -39,11 +41,32 @@ class Home extends Component {
 
   render() {
     const { lists, pagination } = this.state;
+    const { publicRuntimeConfig } = getConfig();
+    const { SITE_URL } = publicRuntimeConfig;
     const header = [
       { key: 'id', title: 'Id', dataIndex: 'id' },
       { key: 'title', title: 'Title', dataIndex: 'title' },
       { key: 'body', title: 'Body', dataIndex: 'body' },
-      { key: 'action', title: 'Action', dataIndex: '', render: (event) => <span onClick={() => { console.log(event); }} style={{ cursor: 'pointer' }}>Delete</span> },
+      {
+        key: 'action',
+        title: 'Action',
+        dataIndex: '',
+        render: (event) => (
+          <Tooltip
+            position="top"
+            content="View"
+          >
+            <a href={`${SITE_URL}user?userId=${event.userId}`}>
+              <i
+                className="fas fa-eye"
+                style={{
+                  cursor: 'pointer'
+                }}
+              />
+            </a>
+          </Tooltip>
+        )
+      },
     ];
 
     return (
@@ -60,6 +83,12 @@ class Home extends Component {
           <Table.CONTENT
             tableHeader={header}
             isLoading={this.state.isLoading}
+            isSorting
+            sortBy={[
+              'id',
+              'title',
+              'body',
+            ]}
           />
           <Table.PAGINATION
             pageRangeDisplayed={_.get(pagination, 'pageRange')}

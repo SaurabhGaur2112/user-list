@@ -4,21 +4,20 @@ import PropTypes from 'prop-types';
 // react components
 import Layout from '../components/globals/Layout';
 // react modules
-import Home from '../modules/home/Home';
+import Users from '../modules/users/Users';
 // webUtils modules
-import { getUserLists } from '../webUtils/home';
+import { getUserDetails } from '../webUtils/user';
 
-export default class Index extends Component {
-  static async getInitialProps() {
-    let userId = 1;
+export default class User extends Component {
+  static async getInitialProps({ query, res, req }) {
     try {
-      const response = await getUserLists({ userId });
+      const response = await getUserDetails(req.query.userId);
       return {
-        userLists: response,
+        userDetails: response,
       };
     } catch (error) {
       return {
-        userLists: {},
+        userDetails: {},
       };
     }
   };
@@ -30,12 +29,12 @@ export default class Index extends Component {
   state = {};
 
   render() {
-    const { userLists } = this.props;
+    const { userDetails } = this.props;
 
     return (
       <Layout>
-        <Home
-          userLists={userLists}
+        <Users
+          userDetails={userDetails}
         />
       </Layout>
     );

@@ -14,6 +14,11 @@ function createServer() {
   const server = express();
   server.use(helmet());
 
+  server.get('/user/', (req, res) => {
+    const actualPage = '/user';
+    app.render(req, res, actualPage);
+  });
+
   server.get('*', (req, res) => {
     req.url = req.url.replace(/\/$/, '');
     if (req.url === '') { req.url = '/'; }

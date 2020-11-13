@@ -9,7 +9,6 @@ export default function Navbar(props) {
     <div className="navbar">
       <span
         className="navbar-title"
-        onClick={() => { console.log("button clicked");}}
       >
         {title}
       </span>
