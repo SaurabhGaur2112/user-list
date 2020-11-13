@@ -1,0 +1,23 @@
+{
+  "name": "user-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "next build",
+    "dev": "ENV_FILE=.env.local NODE_ENV=development node server.js"
+  },
+  "author": "Saurabh Gaur",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "next": "^8.1.0",
+    "node-sass": "^5.0.0",
+    "path": "^0.12.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
