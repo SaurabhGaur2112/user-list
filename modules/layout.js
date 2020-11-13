@@ -1,6 +1,8 @@
 // vendor modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// react modules
+import Navbar from '../components/globals/Navbar';
 // css modules
 import '../static/scss/main.scss';
 
@@ -20,6 +22,9 @@ class Layout extends Component {
 
     return (
       <div>
+        <Navbar
+          title="User List"
+        />
         {children}
       </div>
     );
