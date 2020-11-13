@@ -12,4 +12,9 @@ module.exports = Object.assign({},
     MODE,
     SITE_URL,
   }},
+  {exportPathMap: async function() {
+    return {
+      '/': { page: '/' },
+    };
+  }}
 );
