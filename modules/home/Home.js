@@ -1,24 +1,41 @@
 // vendor modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 // react modules
 import _ from 'lodash';
 import Table from '@hawk-ui/table';
+// action modules
+import { getUserLists } from './HomeActions';
 
-export default class Home extends Component {
+class Home extends Component {
   static propTypes = {
+    getUserLists: PropTypes.func,
     userLists: PropTypes.object,
+    userListReducer: PropTypes.object,
   }
 
   state = {
     lists: this.props.userLists,
+    isLoading: false,
     pagination: {
-      activePage: 1,
       total: 100,
       pageRange: 3,
       pageSize: 10,
     },
   };
+
+  componentWillReceiveProps(nextProps, prevProps) {
+    if (!_.isEqual(nextProps.userListReducer, prevProps.userListReducer) && !_.isEmpty(_.get(nextProps.userListReducer, 'data'))) {
+      setTimeout(() => {
+        this.setState({
+          lists: _.get(nextProps.userListReducer, 'data'),
+          isLoading: false,
+        });
+      }, 300);
+    }
+  }
 
   render() {
     const { lists, pagination } = this.state;
@@ -34,6 +51,7 @@ export default class Home extends Component {
         <Table
           tableContent={lists}
           tableSearchContent={[
+            'id',
             'title',
             'body',
           ]}
@@ -41,19 +59,18 @@ export default class Home extends Component {
           <Table.SEARCH />
           <Table.CONTENT
             tableHeader={header}
-            isLoading={false}
+            isLoading={this.state.isLoading}
           />
           <Table.PAGINATION
             pageRangeDisplayed={_.get(pagination, 'pageRange')}
             itemsCountPerPage={_.get(pagination, 'pageSize')}
             totalItemsCount={_.get(pagination, 'total')}
             onPaginationChange={(event) => {
-              console.log('query event', event);
-              // this.setState((prevState) => {
-              //   const pagination = { ...prevState.pagination };
-              //   pagination.activePage = parseInt(pageNo, 10);
-              //   return { pagination };
-              // });
+              this.setState({
+                isLoading: true,
+              }, () => {
+                this.props.getUserLists({ userId: event });
+              });
             }}
           />
         </Table>
@@ -61,3 +78,17 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    userListReducer: state.userListReducers,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    getUserLists,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

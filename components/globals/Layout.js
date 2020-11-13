@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // react modules
-import Navbar from '../components/globals/Navbar';
+import Navbar from './Navbar';
 // css modules
-import '../static/scss/main.scss';
+import '../../static/scss/main.scss';
 
 export default function Layout(props) {
   const { children } = props;

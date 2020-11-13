@@ -32,3 +32,15 @@ ol, ul {
     height: unset;
   }
 }
+
+.hawk-loader {
+  &__jelly {
+    &-box {
+      background: $orange-1 !important;
+    }
+  }
+}
+
+.hawk-table .hawk-pagination .hawk-pagination__page {
+  background-color: $orange-1 !important;
+}
