@@ -1,34 +1,30 @@
 // vendor modules
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 // react modules
 import Navbar from '../components/globals/Navbar';
 // css modules
 import '../static/scss/main.scss';
 
-class Layout extends Component {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-      PropTypes.array,
-    ]),
-  };
+export default function Layout(props) {
+  const { children } = props;
 
-  state = {};
-
-  render() {
-    const { children } = this.props;
-
-    return (
-      <div>
-        <Navbar
-          title="User List"
-        />
+  return (
+    <div className="layout">
+      <Navbar
+        title="User List"
+      />
+      <div className="layout-child">
         {children}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default Layout;
+Layout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
+};

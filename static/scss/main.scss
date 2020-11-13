@@ -2,4 +2,10 @@
 
 @import './components/components';
 
+@import './modules/layout';
+
 @import './pages/pages';
+
+@import '../../node_modules/@hawk-ui/table/dist/index.min.css';
+@import '../../node_modules/@hawk-ui/input/dist/index.min.css';
+@import '../../node_modules/@hawk-ui/button/dist/index.min.css';

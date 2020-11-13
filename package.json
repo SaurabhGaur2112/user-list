@@ -10,14 +10,19 @@
   "author": "Saurabh Gaur",
   "license": "ISC",
   "dependencies": {
+    "@hawk-ui/button": "^2.10.1",
+    "@hawk-ui/input": "^2.10.1",
+    "@hawk-ui/table": "^2.10.0",
     "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "helmet": "^4.2.0",
+    "express": "^4.16.3",
+    "helmet": "^3.15.0",
+    "lodash": "^4.17.10",
     "next": "^8.1.0",
-    "node-sass": "^5.0.0",
-    "path": "^0.12.7",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  }
+    "node-sass": "^4.9.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {}
 }

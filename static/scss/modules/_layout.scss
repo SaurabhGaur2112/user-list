@@ -1,0 +1,7 @@
+@import '../utils/variables';
+
+.layout {
+  &-child {
+    padding: 50px 100px;
+  }
+}

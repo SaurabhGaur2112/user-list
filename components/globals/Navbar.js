@@ -7,7 +7,10 @@ export default function Navbar(props) {
 
   return (
     <div className="navbar">
-      <span className="navbar-title">
+      <span
+        className="navbar-title"
+        onClick={() => { console.log("button clicked");}}
+      >
         {title}
       </span>
     </div>
