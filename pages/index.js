@@ -26,6 +26,9 @@ export default class Index extends Component {
   static propTypes = {
     userLists: PropTypes.object,
   }
+  static defaultProps = {
+    userLists: {},
+  }
 
   state = {};
 

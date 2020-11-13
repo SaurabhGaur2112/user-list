@@ -25,7 +25,10 @@ export default class User extends Component {
   };
 
   static propTypes = {
-    userLists: PropTypes.object,
+    userDetails: PropTypes.object,
+  }
+  static defaultProps = {
+    userDetails: {},
   }
 
   state = {};
