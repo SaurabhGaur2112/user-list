@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Layout from '../components/globals/Layout';
 // react modules
 import Users from '../modules/users/Users';
+// utils modules
+import { userConfiguration } from '../static/utils/serialize';
 // webUtils modules
 import { getUserDetails } from '../webUtils/user';
 
@@ -34,7 +36,7 @@ export default class User extends Component {
     return (
       <Layout>
         <Users
-          userDetails={userDetails}
+          userDetails={userConfiguration(userDetails)}
         />
       </Layout>
     );

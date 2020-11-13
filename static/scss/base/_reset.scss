@@ -28,6 +28,11 @@ ol, ul {
   margin: 0;
 }
 
+.hawk-button__contained {
+  border-color: $orange-1 !important;
+  background-color: $orange-1 !important;
+}
+
 .hawk-table {
   .hawk-input {
     height: unset;

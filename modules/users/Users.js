@@ -1,6 +1,9 @@
 // vendor modules
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// react component
+import Button from '@hawk-ui/button';
+import DynamicView from '../../components/dynamicView';
 
 export default class Users extends Component {
   static propTypes = {
@@ -10,10 +13,22 @@ export default class Users extends Component {
   render() {
     const { userDetails } = this.props;
 
-    console.log('query userDetails', userDetails);
     return (
       <div className="users">
-        Users
+        <div className="users-header">
+          <a href="/">
+            <Button
+              type="button"
+            >
+              <i className="fas fa-arrow-left" />
+            </Button>
+          </a>
+        </div>
+        <div className="users-container">
+          <DynamicView
+            configuration={userDetails}
+          />
+        </div>
       </div>
     );
   }
